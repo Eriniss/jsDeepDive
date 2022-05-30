@@ -27,7 +27,6 @@ var score;
 
 // 4.5 값의 할당
 
-// 44p 예제
 var score = 80; // 가장 일반적으로 사용되는 변수 할당 방법
 
 console.log(score); // 변수 호이스팅에 의해 undefined가 출력된다.
@@ -36,7 +35,6 @@ var score = 80; // 변수 할당
 
 console.log(score); // 80이 출력된다.
 
-// 45p 예제
 console.log(score); // 2. 아무것도 할당되지 않은 변수가 참조된다.
 
 score = 80; // 3. 변수에 변수값을 할당한다.
@@ -166,13 +164,102 @@ string = hellow; // 오류, 따옴표로 감싸지 않은 hellow를 식별자로
 
 // ES6 에서 발표된 새로운 문자열 표기법으로 ``으로 나타낸다. ``내에서는 이스케이프 시퀀스를 사용할 수 있다.
 
-\0 // Null
-\b // 백스페이스
-\n // 개행, 다음 행으로 이동한다
-\r // 개행, 커서를 처음으로 이동한다
-\t // 탭(수평)
-\v // 탭(수직)
-\uXXX // 유니코드, XXX는 숫자이다
-\' // 작은따옴표
-\" // 큰따옴표
-\\ //백슬래시
+'\0' // Null
+'\b' // 백스페이스
+'\n' // 개행, 다음 행으로 이동한다.
+'\r' // 개행, 커서를 처음으로 이동한다.
+'\t' // 탭(수평)
+'\v' // 탭(수직)
+'\u0041' // 유니코드, 0041은 'A'를 나타낸다.
+'\'' // 작은따옴표
+'\"' // 큰따옴표
+'\\' // 백슬래시'
+
+var coldplay = `for so long, i've been down on my knees\nthen your love song saved me over and over`;
+
+console.log(coldplay); // \n 뒤에있는 문자열은 다음 행으로 이동한다.
+
+var coldplay = `for so long, i'va been down on my knees
+  then your love song saved me over and over`
+
+console.log(coldplay); // ``내에서는 이스케이프 시퀀스를 사용하지 않아도 줄바꿈이 허용된다.
+
+// 템플릿 리터럴 내에서는 표현식 삽입(expression interpolation을 통해 간단히 문자열을 삽입할 수 있다.
+
+var first = "Hong";
+var last = "Gil Dong";
+
+console.log(`My Name is ${first} ${last}.`); // My Name is Hong Gil Dong
+
+// 물론 변수가 아닌 표현식을 사용해도 적용된다
+
+console.log(`1 + 2 = ${1 + 2}`); // 1 + 2 = 3
+
+// 6.4 불리언 타입
+
+// 불리언 타입이란 논리적 참, 거짓을 나타내는 true와 false뿐이다.
+// 보통 조건문에서 많이 쓰인다.
+
+console.log(1 === 1); // true
+
+console.log(1 !== 1) // false
+
+// 6.5 undefined 타입
+
+// 정의되지 않는 타입이다
+
+var foo; // 할당되지 않은 변수
+console.log(foo); // undefined, 할당되지 않으므로 참조할 수 없다.
+
+// 6.6 null 타입
+
+// null값은 변수에 값이 없다는 것을 의도적으로 명시할 때 사용한다.
+// 변수에 null을 할당하는 것은 변수가 이전에 참조하던 값을 더 이상 참조하지 않겠다는 의미이다.
+
+var q = 12; 
+q = null; // 이전 참조 값인 12를 제거한다.
+
+// html 문서에 myClss가 없다고 가정해보자
+
+var element = document.querySelector(".myClass"); // 만약 클래스를 존재하지 않는 클래스를 호출했을때 출력되는값은 null이 된다.
+
+console.log(element);
+
+// 6.7 심벌 타입
+
+// 심벌타입은 변경 불가능한 원시 타입의 값으로 ES6에서 새로 등장하였다.
+// 심벌타입의 경우 33장에서 후술하겠다.
+
+// 6.8 객체 타입
+
+// 자바스크립트를 이루고 있는 거의 모든 것이 객체이다.
+// 객체타입 역시 11장에서 후술하겠다.
+
+
+// 6.10.1 동적 타이핑
+
+// C나 JAVA같은 경우 정적타입(static/strong type)언어로서 변수에 데이터 타입을 사전에 선언해야 한다.
+// JavaScript의 경우 변수를 할당할때 따로 데이터 타입을 지정하지 않는다.
+
+var foo = 3;
+
+console.log(typeof foo); // number, typeof 연산자를 사용하여 변수에 할당된 값의 데이터 타입을 반환할 수 있다.
+
+// 6.10.2 동적 타입 언어와 변수
+
+// 자바스크립트는 동적 언어이기 때문에 개발자가 의도하지 않은 타입오류가 발생할 가능성이 있다.
+// 특히 변수를 사용할 때 주의해야 하며 몇가지 주의점은 다음과 같다.
+
+// 변수를 사용할 때의 주의점
+"변수는 꼭 필요한 경우에 한해 제한적으로 사용한다."
+
+"변수의 유효 범위(스코프)는 최대한 좁게 만들어 변수의 부작용을 억제해야 한다."
+
+"전역 변수는 최대한 사용하지 않도록 한다."
+
+"변수보다는 상수를 사용해 값의 변경을 억제한다."
+
+"변수 이름은 변수의 목적이나 의미를 파악할 수 있도록 네이밍한다."
+
+
+

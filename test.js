@@ -1,7 +1,4 @@
-for (n = 2; n < 10; n++) {
-  for (i = 1; i < 10; i++ ) {
-  
-      console.log(`${n} x ${i} = ${n*i}\n`)
-      
-  }
-}
+var coldplay = `for so long, i'va been down on my knees
+  then your love song saved me over and over`
+
+console.log(coldplay);
