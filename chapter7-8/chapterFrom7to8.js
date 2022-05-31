@@ -272,7 +272,7 @@ function print () {
 
 // 조건문(conditional statement)은 주어진 조건식의 평가 결과에 따라 코드 블록(블록문)의 실행을 결정한다.
 
-// 8.2.1 if ... else 문
+// 8.2.1 if ... else문
 
 // 조건식의 평가 결과가 true일 경우 if 문의 코드 블록이 실행되고, false일 경우 else 문의 코드 블록이 실행된다.
 
@@ -313,7 +313,93 @@ var result = x % 2 ? '홀수' : '짝수';
 console.log(result); // '짝수'
 
 
-// 또한 
+// 또한 경우의 수가 세가지("음수", "양수", "0")라면 다음과 같이 ()를 사용하여 쓸 수 있다.
+
+var num = 2;
+
+var kind = num ? (num > 0 ? '양수' : '음수') : "0";
+
+console.log(kind); // '양수'
+
+
+// 8.2.2 switch문
+
+// switch문은 주어진 표현식을 평가하여 그 값과 일치하는 표현식을 갖는 case 문으로 실행 흐름을 옮긴다.
+
+// switch를 이용한 한글로의 번역
+
+var type = "string";
+
+var typeName;
+
+switch (type) {
+  case "number": typeName = "숫자";
+    break;
+  case "string": typeName = "문자"; // switch문의 type과 case문의 선언된 이름값이 일치하므로 typeName에 "문자" 데이터가 할당된다.
+    break; // 이때 블록문이 출력된 경우 break문을 통해 switch문 밖으로 빠져나와야 한다.
+  case "boolean": typeName = "불리언";
+    break;
+  default: null; // 일반적으로 default 뒤에는 break문을 작성하지 않아도 된다.
+}
+
+console.log(typeName);
+
+// switch문은 조건문에 불리언값을 사용하지 않고 단순히 비교를 통해 일치(===)를 확인한다.
+
+// switch문을 활용한 윤년 판별
+
+var years = 2000;
+var month = 2;
+var days;
+
+switch (month) {
+  case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+    days = 31;
+    break;
+  case 4: case 6: case 9: case 11:
+    days = 30;
+    break;
+  case 2:
+    days = (((years % 4 === 0) && (years % 100 !== 0)) || (years % 400 === 0)) ? 29 : 28;
+    break;
+  default: console.log("Invalid month");
+}
+
+console.log(days); // 29
+
+
+// 연도가 4년으로 나눠떨어지면 윤년, 연도가 100으로 나눠떨어지면 평년, 연도가 400으로 나눠떨어지면 윤년이다.
+// 해석해보면 years가 2000이므로 (2000 % 4 === 0) && (2000 % 100 !== 0)은 true && false이며 이는 false를 출력하게 된다.
+// false || (years % 400 ===0) 이므로 false || true 이며 최종적으로 true가 출력되어 29가 days에 할당된다.
+// 즉, days는 29이며 따라서 2000년은 윤년이다.
+
+
+// 8.3 반복문
+
+// 8.3.1 for문
+
+// for문은 조건식이 거짓으로 평가될 때까지 코드 블록을 반복실행한다.
+
+for (var i = 0; i < 6; i++) {
+  console.log(i); // 0 1 2 3 4 5
+}
+
+// 가장 먼저 선언된 변수 i에서 시작한다.
+// i는 조건문을 거쳐 불리언 값을 출력한다. 불리언값이 true라면 블록문을 실행하게 되며 false이라면 반복문은 그대로 종료된다.
+// 블록문을 실행한 후 i는 증감식을 거친다. 위의 식에서는 증감식이 ++i 이므로 i는 1의 값을 재할당 받게된다.
+// 재할당 받은 i는 다시 조건문으로 가게되며 이를 반복수행한다.
+// 이를통해 i가 6이 될때까지 반복하며 6이 될 시 6 < 6의 조건문이 적용되므로 false값을 출력하여 반복문이 종료된다.
+
+// for문 내에 for문을 중첩하여 사용가능하다. 다음은 두개의 주사위를 던졌을 때 합이 6이되는 경우의 수를 모두 출력하는 반복문이다.
+
+for (var i = 1; i <= 6; i++) {
+  for (var y = 1; y <= 6; y++) {
+    if (i + y === 6) {
+       console.log(`[${i}, ${y}]`);
+    }
+  }
+}
+
 
 
 
