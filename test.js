@@ -1,11 +1,12 @@
-var string = 'Nice to meet you'
-var search = ' ';
-var count = 0;
+let inputA = 1100;
 
-for (var i = 0; i < string.length; i++) {
-  if (string[i] === search) {
-    count++
+function getDigits (inputA) {
+  let arr = [];
+  let str = inputA.toString();
+  for (let i = 0; i < str.length; i++) {
+     arr.push(str[i]);
   }
+  return arr.map(Number);
 }
 
-console.log(count); // 3
+console.log(getDigits());
