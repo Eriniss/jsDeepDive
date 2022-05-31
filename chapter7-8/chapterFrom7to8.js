@@ -406,4 +406,91 @@ for (var i = 1; i <= 6; i++) {
 // 이렇게 반복문안에 반복문, 조건문 등이 복잡하게 얽혀 가독성이 떨어지는 문을 해석할 경우 차분하게 위에서부터 아래로 내려오는 형식으로 풀면 된다.
 
 
+// 8.3.2 while문
+
+// while문 역시 주어직 조건식의 평가 결과가 참이면 코드 블록을 계속해서 반복 실행한다.
+// while문은 보통 반복횟수가 불명확할때 사용하며 for문은 반복횟수가 명확할때 주로 사용한다.
+
+var count = 0;
+
+while (count < 3) { // count가 3이 되면 while문은 종료된다.
+  console.log(count);
+  count++;
+}
+
+// 무한루프에서 탈출하기 위해서는 코드 블록 내에 if문을 통하여 탈출 조건을 만들고 break문으로 코드 블록을 탈출한다.
+
+var count = 0;
+
+while (ture) {
+  console.log(count);
+  count++;
+  if (count === 3) break; // count가 3일때 break문이 작동한다. 작동시 코드 블록에서 탈출한다.
+}
+
+
+// 8.3.3 do ... while 반복문
+
+var count = 0;
+
+do {
+  console.log(count);
+  count++;
+} while (count < 0); // 원래대로라면 조건문이 0 < 0이 되어 false값이 되면서 아무것도 출력되지 않지만 do ... while문의 경우 바로 false값이 나오더라도 한번은 실행한다.
+
+
+// 8.4 break문
+
+// 앞서 봤듯이 break문은 코드 블록을 탈출한다. 정확히는 레이블문, 반복문, 조건문, switch문의 코드블럭을 탈출한다. 위의 조건 외에 사용하면 오류가 발생한다.
+// 레이블문(label statement)이란 식별자가 붙은 문을 말한다.
+
+foo: {
+  console.log(1);
+  break foo; // 여기서 break를 통해 레이블문을 빠져나오게 된다.
+  console.log(2);
+} // 1
+
+outer: for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+    if (i + j === 3) {break outer;}
+    else {console.log(`[${i}, ${j}]`)}
+  }
+}
+
+
+// i + j의 값이 3이 되면 if문을 통해 반복문을 빠져 나오게 된다. 
+// 따라서 i < 3, j < 3을 만족하면서 두 값의 합이 3이 되는 값을 제외한 나머지 데이터를 배열로 나타낸 레이블문이다.
+// 레이블 문은 중첩된 for문 외부로 탈출할 때 유용하지만 그 밖의 경우에는 일반적으로 권장하지 않는다.
+
+
+// 8.5 continue문
+
+// continue문은 반복문의 코드 블록 식행을 현 지점에서 중단하고 반복문의 증감식으로 실행 흐름을 이동시킨다.
+// break문처럼 반복문을 탈출하지는 않는다.
+
+// 아래는 변수 search 안에 있는 문자열의 수를 count에 할당하는 문이다.
+
+var string = 'Nice to meet you'
+var search = ' ';
+var count = 0;
+
+for (var i = 0; i < string.length; i++) { // 1. 먼저 초기변수 i = 0이 할당된다. 2. 0 < 16은 true이므로 블록문을 실행한다. 5. 이러한 반복과정을 조건에 따라 반복한다.
+  if (string[i] !== search) continue; // 3. string[0]은 N이므로 N !== ' '은 true이며 따라서 continue문이 실행된다.
+  count++; // 4. continue문의 실행을 통해 count++는 생략되었다. 6. 만약 if의 조건문에서 false가 나왔다면 count++가 실행된다.
+}
+
+console.log(count); // 3
+
+// 위 예제의 for문은 다음 코드와 동일하게 동작한다.
+
+for (var i = 0; i < string.length; i++) {
+  if (string[i] === search) {
+    count++
+  } 
+}
+
+console.log(count); // 3
+
+// 위의 문처럼 if문 내에서 실행해야 할 코드가 한 줄이라면 continue 문을 사용했을 때보다 간편하고 가독성도 좋다.
+// 하지만 if문 내에서 실행해야 할 코드가 길다면 들여쓰기가 한 단계 더 깊어지므로 continue문을 사용하는 편이 가독성이 더 좋다.
 

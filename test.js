@@ -1,7 +1,11 @@
-for (var i = 1; i <= 6; i++) {
-  for (var y = 1; y <= 6; y++) {
-    if (i + y === 6) {
-       console.log(`[${i}, ${y}]`);
-    }
+var string = 'Nice to meet you'
+var search = ' ';
+var count = 0;
+
+for (var i = 0; i < string.length; i++) {
+  if (string[i] === search) {
+    count++
   }
 }
+
+console.log(count); // 3
