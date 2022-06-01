@@ -1,11 +1,13 @@
-function print (i) {
-  console.log(i);
+var x = 1; // 전역 변수, 즉 최상단 스코프다.
+
+function foo() { // foo의 하위 스코프는 bar이다.
+  var x = 10;
+  bar();
 }
 
-function initiation (n, f) {
-  for (var i = 1; i <= n; i++) {
-    f(i);
-  }
+function bar() { // bar의 상위 스코프는 foo이다.
+  console.log(x);
 }
 
-initiation(5, print);
+foo(); // 
+bar(); // 
