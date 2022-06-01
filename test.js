@@ -1,8 +1,7 @@
-const obj3 = {
-  name: 'Lee', 
-  sayHi() {
-    console.log(`Hi! ${this.name}`);
+function repeatOnce(n) {
+  for (var i = 0; i < n; i++) {
+    guessEvenOrOdd = (i % 2 === 1) ? console.log(i) : null;
   }
 }
 
-obj3.sayHi() // "Hi! Lee"
+repeat2(5);
