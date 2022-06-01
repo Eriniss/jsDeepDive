@@ -1,12 +1,10 @@
-let inputA = 1100;
+const prefix = 'prop';
+let i = 0;
 
-function getDigits (inputA) {
-  let arr = [];
-  let str = inputA.toString();
-  for (let i = 0; i < str.length; i++) {
-     arr.push(str[i]);
-  }
-  return arr.map(Number);
+const obj2 = {
+  [`${prefix}-${++i}`]: i,
+  [`${prefix}-${++i}`]: i,
+  [`${prefix}-${++i}`]: i
 }
 
-console.log(getDigits());
+console.log(obj2) // {prop-1: 1, prop-2: 2, prop-3: 3}
