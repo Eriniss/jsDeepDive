@@ -461,7 +461,46 @@ setTimeout(function () {
   console.log('1초 경과');
 }, 1000);
 
+// 정리하자면 콜백 함수는 인수에 또다른 함수를 할당한 것으로 고차함수를 나타낸것이다.
 
 
+// 12.7.5 순수 함수와 비순수 함수
+
+// 함수형 프로그래밍에서는 어떤 외부 상태에 의존하지도 않고 변경하지도 않는, 즉 부수 효과가 없는 함수를 순수 함수(pure function)이라 한다.
+// 반대로, 외부 상태에 의존하거나 외부 상태를 변경하는, 즉 부수 효과가 있는 함수를 비순수 함수(impure function)라고 한다.
+
+var count = 0; // 현재 카운트를 나타내는 상태
+
+// 순수 함수 increase는 동일한 인수가 전달되면 언제나 동일한 값을 반환한다.
+
+function increase(n) {
+  return n++;
+}
+
+// 순수 함수가 반환한 결과값을 변수에 재할당해서 상태를 변경
+
+count = increase(count);
+console.log(count); // 1
+
+count = increase(count);
+console.log(count); // 2
 
 
+// 비순수 함수는 순수 함수와 달리 외부에 영향을 주는 부수 효과가 나타나난다.
+
+
+var count = 0; // 현재 카운트를 나타내는 상태
+
+// 비순수 함수
+
+function increase() {
+  return ++count; // 외부 상태에 의존하며 외부 상태를 변경한다.
+}
+
+// 비순수 함수는 외부 상태(count)를 변경하므로 상태 변화를 추적하기 어려워진다.
+
+increase();
+console.log(count); // 1
+
+increase();
+console.log(count); //2
