@@ -416,7 +416,6 @@ repeat2(5); // 1 3
 // 즉, 함수의 일부분만이 다르기 때문에 매번 함수를 새롭게 정의해야 한다. 이 문제는 함수를 합성하는 것으로 해결할 수 있다.
 
 // 외부에서 전달받은 f를 n만큼 반복 호출한다.
-
 function repeat(n, f) {
   for (var i = 0; i < n; i++) {
     f(i);
@@ -457,14 +456,12 @@ repeat(5, function (i) { // repeat함수는 위에 있다.
 // 콜백 함수는 함수형 프로그래밍 패러다임 뿐만 아니라 비동기 처리(이벤트 처리, Ajax 통신, 타이머 함수 등)에 다방면에 활용되는 중요한 패턴이다.
 
 // 콜백 함수를 사용한 이벤트 처리
-
 document.getElementById('myButton').addEventListener('click', function () {
   console.log('button clicked');
 });
 
 //콜백 함수를 사용한 비동기 처리
 // 1초 후에 메시지를 출력한다.
-
 setTimeout(function () {
   console.log('1초 경과');
 }, 1000);
@@ -480,13 +477,11 @@ setTimeout(function () {
 var count = 0; // 현재 카운트를 나타내는 상태
 
 // 순수 함수 increase는 동일한 인수가 전달되면 언제나 동일한 값을 반환한다.
-
 function increase(n) {
   return n++;
 }
 
 // 순수 함수가 반환한 결과값을 변수에 재할당해서 상태를 변경
-
 count = increase(count);
 console.log(count); // 1
 
@@ -506,7 +501,6 @@ function increase() {
 }
 
 // 비순수 함수는 외부 상태(count)를 변경하므로 상태 변화를 추적하기 어려워진다.
-
 increase();
 console.log(count); // 1
 
