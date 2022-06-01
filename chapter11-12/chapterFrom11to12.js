@@ -402,10 +402,21 @@ function repeat2(n) {
 
 repeat2(5); // 1 3
 
+// 아래의 함수는 삼항 조건 연산자로 나타낸 것이다.
+
+function repeat2(n) {
+  for (var i = 0; i < n; i++) {
+    guessEvenOrOdd = (i % 2) ? console.log(i) : null; // 조건문에서 i % 2가 만약 1이라면 truthy 값이므로 console.log(i)가 출력된다.
+  }
+}
+
+repeat2(5); // 1 3
+
 // 위 예제의 함수들은 반복하는 일은 변하지 않고 공통적으로 수행하지만 반복하면서 하는 일의 내용은 다르다.
 // 즉, 함수의 일부분만이 다르기 때문에 매번 함수를 새롭게 정의해야 한다. 이 문제는 함수를 합성하는 것으로 해결할 수 있다.
 
 // 외부에서 전달받은 f를 n만큼 반복 호출한다.
+
 function repeat(n, f) {
   for (var i = 0; i < n; i++) {
     f(i);
@@ -417,10 +428,40 @@ var logAll = function (i) {
 }
 
 // 반복 호출할 함수를 인수로 전달한다.
-repeat(5, logAll); // 0 1 2 3 4
+repeat(5, logAll); // 0 1 2 3 4, 콜백 함수에서 인수안에 들어가는 함수는 인수를 넣지 않는다.
 
 var logOdds = function (i) {
   if (i % 2) console.log(i);
 }
 
-repeat(5, logOdds); // 1 3
+repeat(5, logOdds); // 1 3, 콜백 함수에서 인수안에 들어가는 함수는 인수를 넣지 않는다.
+
+// 익명 함수 리터럴을 콜백 함수로 고차 함수에 전달한다.
+// 익명 함수 리터럴은 repeat 함수를 호출할 때마다 평가되어 함수 객체를 생성한다.
+
+repeat(5, function (i) { // repeat함수는 위에 있다.
+  if (i % 2) {
+    console.log(i);
+  }
+}) // 1 3 
+
+
+// 콜백 함수는 함수형 프로그래밍 패러다임 뿐만 아니라 비동기 처리(이벤트 처리, Ajax 통신, 타이머 함수 등)에 다방면에 활용되는 중요한 패턴이다.
+
+// 콜백 함수를 사용한 이벤트 처리
+
+document.getElementById('myButton').addEventListener('click', function () {
+  console.log('button clicked');
+});
+
+//콜백 함수를 사용한 비동기 처리
+// 1초 후에 메시지를 출력한다.
+
+setTimeout(function () {
+  console.log('1초 경과');
+}, 1000);
+
+
+
+
+
