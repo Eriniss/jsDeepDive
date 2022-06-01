@@ -396,3 +396,4 @@ const obj3 = {
   }
 }
 
+obj3.sayHi() // "Hi! Lee"
