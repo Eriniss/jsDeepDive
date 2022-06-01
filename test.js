@@ -1,13 +1,7 @@
-var x = 1; // 전역 변수, 즉 최상단 스코프다.
+const x = 1;
 
-function foo() { // foo의 하위 스코프는 bar이다.
-  var x = 10;
-  bar();
-}
+person = {x}
 
-function bar() { // bar의 상위 스코프는 foo이다.
-  console.log(x);
-}
+person.x = 4;
 
-foo(); // 
-bar(); // 
+console.log(person); // { x: 4 }
