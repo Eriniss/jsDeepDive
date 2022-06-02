@@ -1,15 +1,9 @@
-function square(number) {
-  return number * number
+{
+  //ES6 Rest parameter
+  function sum(...args) {
+    return args.reduce((pre, cur) => pre + cur, 0);
+  }
+
+  console.log(sum(1, 2, 3)); // 6
+  console.log(sum(1, 2, 3, 4, 5)); // 15
 }
-
-console.dir(square);
-
-// ƒ square(number)
-// arguments: null
-// caller: null
-// length: 1
-// name: "square"
-// prototype: {constructor: ƒ}
-// [[FunctionLocation]]: test.js:1
-// [[Prototype]]: ƒ ()
-// [[Scopes]]: Scopes[1]

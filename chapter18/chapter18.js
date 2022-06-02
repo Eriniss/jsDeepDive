@@ -63,7 +63,7 @@
     return args.reduce((pre, cur) => pre + cur, 0);
   }
 
-  console.log(sum(1, 2)); //3
+  console.log(sum(1, 2)); // 3
   console.log(sum(1, 2, 3, 4, 5)); // 15
 }
 // arguments 객체와 Rest 파라미터에 대해서는 26.4절 "Rest 파라미터"에서 좀 더 자세히 살펴보겠다.
