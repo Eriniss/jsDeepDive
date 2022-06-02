@@ -1,7 +1,13 @@
-var MYAPP = {}; // 전역 네임스페이스 객체
+{
+  // 빈 객체 생성
+  const person = new Object();
 
-var name = 'Lee', address = 'Seoul';
-
-MYAPP.person = {name, address};
-
-console.log(MYAPP.person.name); // "Lee"
+  // 프로퍼티 추가
+  person.name = 'Lee';
+  person.sayHello = function () {
+    console.log(`안녕하세요! 만나서 반갑습니다. ${this.name}라고 합니다.`);
+  }
+  
+  console.log(person); // {name: "Lee", sayHello: f}
+  person.sayHello(); // 안녕하세요! 만나서 반갑습니다. Lee라고 합니다.
+}
